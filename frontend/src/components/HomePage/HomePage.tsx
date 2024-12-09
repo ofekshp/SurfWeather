@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Wind, Thermometer, Clock, Search } from 'lucide-react';
 import { getWeatherData } from "../../services/weatherAPI";
-
+import { useNavigate } from 'react-router-dom';
 // Define the type for weather data
 interface WeatherData {
   windSpeed: number;
@@ -12,6 +12,7 @@ interface WeatherData {
 
 
 function HomePage() {
+  const navigate = useNavigate();
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -50,7 +51,7 @@ function HomePage() {
       <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
         Weather
       </h1>
-
+      <button className="postBTN myButton" onClick={() => navigate('/myApp')}>APP</button>
       <form onSubmit={handleSearch} className="search-bar">
         <input
           type="text"
