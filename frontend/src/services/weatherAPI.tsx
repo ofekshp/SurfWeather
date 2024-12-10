@@ -1,23 +1,10 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-export const getWeatherData = async (query: string): Promise<AxiosResponse> => {
+export const getWeatherData = async (city: string): Promise<AxiosResponse> => {
     try {
-        const baseURL = "http://api.weatherapi.com/v1";
-        const key = import.meta.env.VITE_STORMGLASS_API_KEY;
-
-        if (!key) {
-            throw new Error("API key is missing. Please set VITE_STORMGLASS_API_KEY in the environment.");
-        }
-
-        const endpoint = "current.json";
-
-        const response: AxiosResponse = await axios.get(`${baseURL}/${endpoint}`, {
-            params: {
-                key: key,
-                q: query,
-            },
-        });
-
+        const key = import.meta.env.VITE_OPENWEATHER_API_KEY;
+        const baseURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`;   
+        const response: AxiosResponse = await axios.get(baseURL);
         return response;
     } catch (error) {
         if (axios.isAxiosError(error)) {

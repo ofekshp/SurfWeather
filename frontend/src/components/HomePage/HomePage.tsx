@@ -31,6 +31,7 @@ function HomePage() {
           temperature: data.temp_c,
           lastUpdated: data.last_updated,
           feelsLike: data.feelslike_c,
+          
         });
       } catch (error) {
         console.error("Failed to fetch weather data:", error);
