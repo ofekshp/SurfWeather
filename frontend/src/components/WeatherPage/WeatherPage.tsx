@@ -54,8 +54,7 @@ const WeatherPage = () => {
         icon: icon
       });
     } catch (error) {
-      console.error("Failed to fetch weather data:", error);
-      alert("Error");
+      alert("City not found.");
     }
   }
 
@@ -66,14 +65,6 @@ const WeatherPage = () => {
     }
     search(city);
   }
-
-useEffect(() => {
-
-  
-})
-
-
-
 
   return (
     <div className='weather'>
